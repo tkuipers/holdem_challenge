@@ -10,6 +10,8 @@ import java.util.stream.Collectors;
 public class ArterysMain {
     public static void main(String[] args) {
         var orderedPlayers = new GameEvaluator(new StandardInputReader()).evaluateGame();
-        System.out.println(orderedPlayers.stream().collect(Collectors.joining("\n")));
+        for(var i = 0; i < orderedPlayers.size(); i++) {
+            System.out.println(i + " " +orderedPlayers.get(i));
+        }
     }
 }
