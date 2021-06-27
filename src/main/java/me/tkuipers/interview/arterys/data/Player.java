@@ -22,6 +22,9 @@ public class Player {
 
     public static Player fromString(String player, Collection<Card> community) {
         var cardStrings = player.split("\\s+");
+        if(cardStrings.length != 3){
+            throw new IllegalStateException("Players must have exactly 2 cards and a name.");
+        }
         return new Player(cardStrings[0], cardStrings[1], cardStrings[2], community);
     }
 

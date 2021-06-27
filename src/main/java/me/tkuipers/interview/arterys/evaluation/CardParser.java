@@ -21,8 +21,13 @@ public class CardParser {
         Collection<Card> community = Lists.newArrayList();
         players = Lists.newArrayList();
         LOG.info("Beginning to evaluate community hand");
+        var communityCards = reader.getCommunityString().split("\\s+");
 
-        for(var cardString : reader.getCommunityString().split("\\s+")) {
+        if(communityCards.length != 5){
+            throw new IllegalStateException("Cannot have more than 5 community cards.");
+        }
+
+        for(var cardString : communityCards) {
             community.add(Card.fromString(cardString));
         }
         LOG.info("Evaludated community hand: " + community);

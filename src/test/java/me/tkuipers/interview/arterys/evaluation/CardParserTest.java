@@ -62,6 +62,30 @@ public class CardParserTest {
                 getPlayer("Jackie", parser.getPlayers()).getOwnCards());
     }
 
+    @Test
+    public void badCaseTooManyCommunityCards() {
+        reader.setPlayerString(
+                Lists.newArrayList("Annie 4H                       2D",
+                        "John 3H          6C",
+                        "Jackie     4D 6S"));
+        reader.setCommunityString("AH 5S    2C KD 9S 6D");
+        Assertions.assertThrows(IllegalStateException.class, () -> {
+            var parser = new CardParser(reader);
+        });
+    }
+
+    @Test
+    public void badCaseTooManyPlayerCards() {
+        reader.setPlayerString(
+                Lists.newArrayList("Annie 4H                       2D",
+                        "John 3H          6C 4D",
+                        "Jackie     4D 6S"));
+        reader.setCommunityString("AH 5S    2C KD 9S");
+        Assertions.assertThrows(IllegalStateException.class, () -> {
+            var parser = new CardParser(reader);
+        });
+    }
+
     private Player getPlayer(String name, Collection<Player> players) {
         for(var player : players) {
             if(player.getName().equals(name)){
