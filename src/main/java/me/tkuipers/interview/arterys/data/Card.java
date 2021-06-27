@@ -35,14 +35,6 @@ public class Card {
 
     }
 
-    public Suit getSuit() {
-        return suit;
-    }
-
-    public int getValue() {
-        return value;
-    }
-
     public String getDescription() {
         return getFaceFromValue(value);
     }
@@ -77,6 +69,14 @@ public class Card {
                 return "Ace";
         }
         return null;
+    }
+
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public int getValue() {
+        return value;
     }
 
     @Override

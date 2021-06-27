@@ -7,13 +7,13 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.List;
 
-public class HighCardValidator extends Validator{
-    public HighCardValidator() {
+public class HighCardHandPreparer extends HandPreparer {
+    public HighCardHandPreparer() {
         super(HandType.HIGH_CARD);
     }
 
     @Override
     protected HandValidation evaluate(List<Card> hand) {
-        return new HandValidation(true, hand, Lists.newArrayList(), this.type);
+        return new HandValidation(true, hand, this.type);
     }
 }

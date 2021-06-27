@@ -8,17 +8,17 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class HighCardValidatorTest {
+public class HighCardHandPreparerTest {
     @Test
     public void highKing() {
         var hand = Lists.newArrayList(Card.fromString("6S"), Card.fromString("8S"), Card.fromString("7C"),
                 Card.fromString("2D"), Card.fromString("KH"));
 
-        var validator = new HighCardValidator().evaluateHand(hand);
+        var validator = new HighCardHandPreparer().evaluateHand(hand);
 
         assertTrue(validator.isValid(), hand.toString());
         assertEquals(HandType.HIGH_CARD, validator.getType());
-        assertEquals(5, validator.getInHandCards().size(), "Expected five cards to be in hand");
+        assertEquals(5, validator.getCards().size(), "Expected five cards to be in hand");
     }
 
     @Test
@@ -26,10 +26,10 @@ public class HighCardValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("6S"), Card.fromString("AS"), Card.fromString("7C"),
                 Card.fromString("2D"), Card.fromString("KH"));
 
-        var validator = new HighCardValidator().evaluateHand(hand);
+        var validator = new HighCardHandPreparer().evaluateHand(hand);
 
         assertTrue(validator.isValid(), hand.toString());
-        assertEquals(5, validator.getInHandCards().size(), "Expected five cards to be in hand");
+        assertEquals(5, validator.getCards().size(), "Expected five cards to be in hand");
     }
 
     @Test
@@ -37,9 +37,9 @@ public class HighCardValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("6S"), Card.fromString("6H"), Card.fromString("6C"),
                 Card.fromString("6D"), Card.fromString("KH"));
 
-        var validator = new HighCardValidator().evaluateHand(hand);
+        var validator = new HighCardHandPreparer().evaluateHand(hand);
 
         assertTrue(validator.isValid(), hand.toString());
-        assertEquals(5, validator.getInHandCards().size(), "Expected five cards to be in hand");
+        assertEquals(5, validator.getCards().size(), "Expected five cards to be in hand");
     }
 }

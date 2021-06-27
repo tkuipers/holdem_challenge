@@ -18,7 +18,6 @@ public class GameEvaluator {
     public List<String> evaluateGame() {
         var gameData = new CardParser(reader);
         var eval = new EvaluationEngine();
-        //copy list here so that we can sort on hands.
         var players = gameData.getPlayers();
         for(var player : players) {
             player.setBestHand(eval.evaluate(player));

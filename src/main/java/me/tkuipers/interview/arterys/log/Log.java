@@ -8,6 +8,7 @@ import java.util.logging.SimpleFormatter;
 
 public class Log {
     private static FileHandler handler;
+    private static final String LOG_LOCATION = "/tmp/tkuipers/output.log";
     public static Logger getLogger(String logName) {
         try {
             if(handler == null){
@@ -30,7 +31,7 @@ public class Log {
     }
 
     private static void initializeHandler() throws IOException {
-        handler = new FileHandler("/tmp/log/output.log", true);
+        handler = new FileHandler(LOG_LOCATION, true);
         handler.setFormatter(new SimpleFormatter());
         handler.setLevel(Level.INFO);
     }

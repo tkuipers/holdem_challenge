@@ -28,11 +28,6 @@ public class Player {
         this.optionGen = new HandOptionGenerator(Stream.concat(cards.stream(), communityCards.stream()).collect(Collectors.toList()));
     }
 
-    public Collection<List<Card>> getHands() {
-        return optionGen.combine();
-    }
-
-
     @Override
     public String toString() {
         return "Player{" +
@@ -59,5 +54,9 @@ public class Player {
 
     public ImmutableCollection<Card> getOwnCards() {
         return cards;
+    }
+
+    public Collection<List<Card>> getHands() {
+        return optionGen.combine();
     }
 }

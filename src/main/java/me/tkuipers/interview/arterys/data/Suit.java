@@ -1,17 +1,10 @@
 package me.tkuipers.interview.arterys.data;
 
 public enum Suit {
-    //TODO: Remove this idea of values, we won't be hashing.
-    HEARTS(0),
-    DIAMONDS(13),
-    CLUBS(26),
-    SPADES(39);
-
-    private final int value;
-
-    Suit(int startingVal) {
-        value = startingVal;
-    }
+    HEARTS,
+    DIAMONDS,
+    CLUBS,
+    SPADES;
 
     public static Suit fromChar(Character val) {
         switch(val){
@@ -25,9 +18,5 @@ public enum Suit {
                 return CLUBS;
         }
         throw new IllegalArgumentException("Cannot create class from: " + val);
-    }
-
-    public int getValue() {
-        return value;
     }
 }

@@ -8,8 +8,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.Comparator;
 import java.util.List;
 
-public abstract class SameSuiteValidator extends Validator{
-    protected SameSuiteValidator(HandType type){
+public abstract class SameSuiteHandPreparer extends HandPreparer {
+    protected SameSuiteHandPreparer(HandType type){
         super(type);
     }
 

@@ -18,9 +18,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.ROYAL_FLUSH, royalFlush.getType());
+        Assertions.assertEquals(HandType.ROYAL_FLUSH, validation.getType());
     }
 
     @Test
@@ -33,9 +33,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.STRAIGHT_FLUSH, royalFlush.getType());
+        Assertions.assertEquals(HandType.STRAIGHT_FLUSH, validation.getType());
     }
 
     @Test
@@ -48,9 +48,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.FOUR_OF_A_KIND, royalFlush.getType());
+        Assertions.assertEquals(HandType.FOUR_OF_A_KIND, validation.getType());
     }
 
     @Test
@@ -63,9 +63,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.FULL_HOUSE, royalFlush.getType());
+        Assertions.assertEquals(HandType.FULL_HOUSE, validation.getType());
     }
 
     @Test
@@ -78,9 +78,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.FLUSH, royalFlush.getType());
+        Assertions.assertEquals(HandType.FLUSH, validation.getType());
     }
 
     @Test
@@ -93,9 +93,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.STRAIGHT, royalFlush.getType());
+        Assertions.assertEquals(HandType.STRAIGHT, validation.getType());
     }
 
     @Test
@@ -108,9 +108,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.THREE_OF_A_KIND, royalFlush.getType());
+        Assertions.assertEquals(HandType.THREE_OF_A_KIND, validation.getType());
     }
 
     @Test
@@ -123,9 +123,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.TWO_PAIR, royalFlush.getType());
+        Assertions.assertEquals(HandType.TWO_PAIR, validation.getType());
     }
 
     @Test
@@ -138,9 +138,9 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.ONE_PAIR, royalFlush.getType());
+        Assertions.assertEquals(HandType.ONE_PAIR, validation.getType());
     }
 
     @Test
@@ -153,8 +153,23 @@ public class EvaluationEngineTest {
                         Card.fromString("KH")));
         var engine = new EvaluationEngine();
 
-        var royalFlush = engine.evaluate(p);
+        var validation = engine.evaluate(p);
 
-        Assertions.assertEquals(HandType.HIGH_CARD, royalFlush.getType());
+        Assertions.assertEquals(HandType.HIGH_CARD, validation.getType());
+    }
+
+    @Test
+    public void playerWithWheel() {
+        var p = Player.fromString("Testy AH 4H",
+                Lists.newArrayList(Card.fromString("3H"),
+                        Card.fromString("5H"),
+                        Card.fromString("TS"),
+                        Card.fromString("AD"),
+                        Card.fromString("2H")));
+        var engine = new EvaluationEngine();
+
+        var validation = engine.evaluate(p);
+
+        Assertions.assertEquals(HandType.STRAIGHT_FLUSH, validation.getType());
     }
 }

@@ -14,7 +14,7 @@ import java.util.logging.Logger;
 
 public class EvaluationEngine {
     private static final Logger LOG = Log.getLogger(CardParser.class.getSimpleName());
-    private Collection<Validator> validators;
+    private Collection<HandPreparer> handPreparers;
 
     public HandValidation evaluate(Player player) {
         HandValidation bestHand = null;
@@ -37,22 +37,22 @@ public class EvaluationEngine {
     }
 
     private void addValidators() {
-        this.validators = List.of(
-                new RoyalFlushValidator(),
-                new StraightFlushValidator(),
-                new FourOfAKindValidator(),
-                new FullHouseValidator(),
-                new FlushValidator(),
-                new StraightValidator(),
-                new ThreeOfAKindValidator(),
-                new TwoPairValidator(),
-                new OnePairValidator(),
-                new HighCardValidator()
+        this.handPreparers = List.of(
+                new RoyalFlushHandPreparer(),
+                new StraightFlushHandPreparer(),
+                new FourOfAKindHandPreparer(),
+                new FullHouseHandPreparer(),
+                new FlushHandPreparer(),
+                new StraightHandPreparer(),
+                new ThreeOfAKindHandPreparer(),
+                new TwoPairHandPreparer(),
+                new OnePairHandPreparer(),
+                new HighCardHandPreparer()
         );
     }
 
     private HandValidation evaluateHand(List<Card> hand) {
-        for(var validator : this.validators) {
+        for(var validator : this.handPreparers) {
             LOG.fine("\tChecking hand for: " + validator.getType() + " hand: " + hand);
             var handValidation = validator.evaluateHand(hand);
             if(handValidation.isValid()) {

@@ -3,22 +3,23 @@ package me.tkuipers.interview.arterys.evaluation.hands.validator;
 import com.google.common.collect.Lists;
 import me.tkuipers.interview.arterys.data.Card;
 import me.tkuipers.interview.arterys.data.HandType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class TwoPairValidatorTest {
+public class TwoPairHandPreparerTest {
     @Test
     public void passCase() {
         var hand = Lists.newArrayList(Card.fromString("5H"), Card.fromString("5D"), Card.fromString("6C"),
                 Card.fromString("4S"), Card.fromString("4D"));
 
-        var validator = new TwoPairValidator().evaluateHand(hand);
+        var validator = new TwoPairHandPreparer().evaluateHand(hand);
 
-        assertTrue(validator.isValid(), hand.toString());
-        assertEquals(HandType.TWO_PAIR, validator.getType());
-        assertEquals(4, validator.getInHandCards().size(), "Expected 3 cards to be in hand");
-        assertEquals(1, validator.getOutOfHandCards().size(), "Expected 2 cards to be in hand");
+        Assertions.assertTrue(validator.isValid(), hand.toString());
+        Assertions.assertEquals(HandType.TWO_PAIR, validator.getType());
+        Assertions.assertEquals(5, validator.getCards().size(), "Expected 3 cards to be in hand");
+        Assertions.assertEquals(4, validator.getType().getHandSize());
     }
 
     @Test
@@ -26,9 +27,9 @@ public class TwoPairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("5H"), Card.fromString("5D"), Card.fromString("4C"),
                 Card.fromString("4S"), Card.fromString("5D"));
 
-        var validator = new TwoPairValidator().evaluateHand(hand);
+        var validator = new TwoPairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 
     @Test
@@ -36,9 +37,9 @@ public class TwoPairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("5H"), Card.fromString("5D"), Card.fromString("6C"),
                 Card.fromString("4S"), Card.fromString("5D"));
 
-        var validator = new TwoPairValidator().evaluateHand(hand);
+        var validator = new TwoPairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 
     @Test
@@ -46,9 +47,9 @@ public class TwoPairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("5H"), Card.fromString("6D"), Card.fromString("7C"),
                 Card.fromString("8S"), Card.fromString("5D"));
 
-        var validator = new TwoPairValidator().evaluateHand(hand);
+        var validator = new TwoPairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 
     @Test
@@ -56,8 +57,8 @@ public class TwoPairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("5H"), Card.fromString("6D"), Card.fromString("7C"),
                 Card.fromString("8S"), Card.fromString("9D"));
 
-        var validator = new TwoPairValidator().evaluateHand(hand);
+        var validator = new TwoPairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 }

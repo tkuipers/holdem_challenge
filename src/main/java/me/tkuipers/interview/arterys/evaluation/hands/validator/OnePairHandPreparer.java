@@ -5,11 +5,10 @@ import me.tkuipers.interview.arterys.data.Card;
 import me.tkuipers.interview.arterys.data.HandType;
 import me.tkuipers.interview.arterys.data.HandValidation;
 
-import javax.print.attribute.HashDocAttributeSet;
 import java.util.List;
 
-public class OnePairValidator extends MappedCardValidator{
-    public OnePairValidator() {
+public class OnePairHandPreparer extends MappedCardHandPreparer {
+    public OnePairHandPreparer() {
         super(HandType.ONE_PAIR);
     }
 
@@ -29,7 +28,7 @@ public class OnePairValidator extends MappedCardValidator{
                 }
             }
             if(isValid) {
-                return new HandValidation(true, pair, outOfHand, this.type);
+                return new HandValidation(true, joinLists(pair, outOfHand), this.type);
             }
         }
         return new HandValidation(false);

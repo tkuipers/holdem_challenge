@@ -9,14 +9,16 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class HandPrintingFormatters {
-    public static final HandPrintingFormatter HIGH_CARD = hand -> hand.get(hand.size()-1).getDescription();
+    public static final HandPrintingFormatter HIGH_CARD = validation -> validation.getCards().get(validation.getCards().size()-1).getDescription();
 
-    public static final HandPrintingFormatter UNIQUE_VALUES = hand -> {
+    public static final HandPrintingFormatter UNIQUE_VALUES = validation -> {
+        var hand = validation.getCards().subList(5-validation.getType().getHandSize(), validation.getCards().size()-1);
         Set<Integer> uniqueCards = Sets.newHashSet();
 
         uniqueCards.addAll(hand.stream().map(c -> c.getValue()).collect(Collectors.toList()));
 
-        return uniqueCards.stream().sorted((v1, v2) -> Integer.compare(v1, v2) *  -1).map(c -> Card.getFaceFromValue(c)).collect(Collectors.joining(" "));
+        return uniqueCards.stream().sorted((v1, v2) -> Integer.compare(v1, v2) *  -1).map(c -> Card.getFaceFromValue(c))
+                .collect(Collectors.joining(" "));
     };
 
     public static final HandPrintingFormatter PRINT_NOTHING = hand -> "";

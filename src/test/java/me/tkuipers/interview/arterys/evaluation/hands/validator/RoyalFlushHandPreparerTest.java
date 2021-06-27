@@ -7,17 +7,17 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class RoyalFlushValidatorTest {
+public class RoyalFlushHandPreparerTest {
     @Test
     public void heartRF() {
         var hand = Lists.newArrayList(Card.fromString("KH"), Card.fromString("TH"), Card.fromString("JH"),
                 Card.fromString("QH"), Card.fromString("AH"));
 
-        var validator = new RoyalFlushValidator().evaluateHand(hand);
+        var validator = new RoyalFlushHandPreparer().evaluateHand(hand);
 
         assertTrue(validator.isValid(), hand.toString());
         assertEquals(HandType.ROYAL_FLUSH, validator.getType());
-        assertEquals(5, validator.getInHandCards().size(), "Expected all cards to be in hand");
+        assertEquals(5, validator.getCards().size(), "Expected all cards to be in hand");
     }
 
     @Test
@@ -25,7 +25,7 @@ public class RoyalFlushValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("9H"), Card.fromString("TD"), Card.fromString("JC"),
                 Card.fromString("QS"), Card.fromString("KH"));
 
-        var validator = new RoyalFlushValidator().evaluateHand(hand);
+        var validator = new RoyalFlushHandPreparer().evaluateHand(hand);
 
         assertFalse(validator.isValid(), hand.toString());
     }
@@ -35,7 +35,7 @@ public class RoyalFlushValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("9H"), Card.fromString("6H"), Card.fromString("JH"),
                 Card.fromString("QH"), Card.fromString("KH"));
 
-        var validator = new RoyalFlushValidator().evaluateHand(hand);
+        var validator = new RoyalFlushHandPreparer().evaluateHand(hand);
 
         assertFalse(validator.isValid(), hand.toString());
     }

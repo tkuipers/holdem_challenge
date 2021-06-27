@@ -8,8 +8,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FullHouseValidator extends MappedCardValidator{
-    public FullHouseValidator() {
+public class FullHouseHandPreparer extends MappedCardHandPreparer {
+    public FullHouseHandPreparer() {
         super(HandType.FULL_HOUSE);
     }
 
@@ -18,7 +18,7 @@ public class FullHouseValidator extends MappedCardValidator{
         if(map.asMap().entrySet().size() == 2){
             var keys = map.asMap().keySet().stream().collect(Collectors.toList());
             if(map.asMap().get(keys.get(0)).size() == 3 || map.asMap().get(keys.get(1)).size() == 3) {
-                return new HandValidation(true, hand, Lists.newArrayList(), this.type);
+                return new HandValidation(true, hand, this.type);
             }
         }
         return new HandValidation(false);

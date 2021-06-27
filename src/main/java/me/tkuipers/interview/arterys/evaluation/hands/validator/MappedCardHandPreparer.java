@@ -6,12 +6,11 @@ import me.tkuipers.interview.arterys.data.HandType;
 import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.List;
-import java.util.Map;
 
-public abstract class MappedCardValidator extends Validator{
+public abstract class MappedCardHandPreparer extends HandPreparer {
     protected ArrayListMultimap<Integer, Card> map;
 
-    protected MappedCardValidator(HandType type){
+    protected MappedCardHandPreparer(HandType type){
         super(type);
         map = ArrayListMultimap.create();
     }

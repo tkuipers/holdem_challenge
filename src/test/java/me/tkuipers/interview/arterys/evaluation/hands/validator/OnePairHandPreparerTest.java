@@ -3,22 +3,23 @@ package me.tkuipers.interview.arterys.evaluation.hands.validator;
 import com.google.common.collect.Lists;
 import me.tkuipers.interview.arterys.data.Card;
 import me.tkuipers.interview.arterys.data.HandType;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class OnePairValidatorTest {
+public class OnePairHandPreparerTest {
     @Test
     public void passCase() {
         var hand = Lists.newArrayList(Card.fromString("2S"), Card.fromString("AS"), Card.fromString("7C"),
                 Card.fromString("6D"), Card.fromString("2H"));
 
-        var validator = new OnePairValidator().evaluateHand(hand);
+        var validator = new OnePairHandPreparer().evaluateHand(hand);
 
-        assertTrue(validator.isValid(), hand.toString());
-        assertEquals(HandType.ONE_PAIR, validator.getType());
-        assertEquals(2, validator.getInHandCards().size(), "Expected two cards to be in hand");
-        assertEquals(3, validator.getOutOfHandCards().size(), "Expected 3 possible kickers");
+        Assertions.assertTrue(validator.isValid(), hand.toString());
+        Assertions.assertEquals(HandType.ONE_PAIR, validator.getType());
+        Assertions.assertEquals(5, validator.getCards().size(), "Expected two cards to be in hand");
+        Assertions.assertEquals(2, validator.getType().getHandSize());
     }
 
     @Test
@@ -26,9 +27,9 @@ public class OnePairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("2S"), Card.fromString("AS"), Card.fromString("7C"),
                 Card.fromString("2D"), Card.fromString("2H"));
 
-        var validator = new OnePairValidator().evaluateHand(hand);
+        var validator = new OnePairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 
     @Test
@@ -36,8 +37,8 @@ public class OnePairValidatorTest {
         var hand = Lists.newArrayList(Card.fromString("2S"), Card.fromString("AS"), Card.fromString("7C"),
                 Card.fromString("9D"), Card.fromString("TH"));
 
-        var validator = new OnePairValidator().evaluateHand(hand);
+        var validator = new OnePairHandPreparer().evaluateHand(hand);
 
-        assertFalse(validator.isValid(), hand.toString());
+        Assertions.assertFalse(validator.isValid(), hand.toString());
     }
 }

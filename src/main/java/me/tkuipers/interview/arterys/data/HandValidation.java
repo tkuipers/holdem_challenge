@@ -4,27 +4,21 @@ import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 public class HandValidation {
-    private static final String KICKER_PROP = "kicker";
-    private static final String LOW_WHEEL_PROP = "low_wheel";
-
     private final boolean isValid;
-    private final ImmutableList<Card> inHandCards;
-    private final ImmutableList<Card> outOfHand;
+    private final ImmutableList<Card> cards;
     private HandType type;
-    private Set<String> properties;
+    private Set<Card> kickers;
 
-    public HandValidation(boolean isValid, List<Card> inHandCards, List<Card> outOfHandCards, HandType handType) {
+    public HandValidation(boolean isValid, List<Card> cards, HandType handType) {
         this.isValid = isValid;
-        this.inHandCards = ImmutableList.copyOf(inHandCards);
-        this.outOfHand = ImmutableList.copyOf(outOfHandCards);
+        this.cards = ImmutableList.copyOf(cards);
         this.type = handType;
-        this.properties = Sets.newHashSet();
+        this.kickers = Sets.newHashSet();
     }
 
     public HandValidation(boolean isValid) {
@@ -32,22 +26,16 @@ public class HandValidation {
             throw new IllegalArgumentException("Cannot create an empty valid hand");
         }
         this.isValid = false;
-        inHandCards = null;
-        outOfHand = null;
+        cards = null;
         type = null;
-        this.properties = null;
     }
 
     public boolean isValid() {
         return isValid;
     }
 
-    public ImmutableList<Card> getInHandCards() {
-        return inHandCards;
-    }
-
-    public ImmutableList<Card> getOutOfHandCards() {
-        return outOfHand;
+    public ImmutableList<Card> getCards() {
+        return cards;
     }
 
     public HandType getType() {
@@ -55,37 +43,19 @@ public class HandValidation {
     }
 
     public String getHandDescription() {
-        var base = this.type.getDescription() + " " + this.type.getPrinter().getDescription(inHandCards);
+        var base = this.type.getDescription() + " " + this.type.getPrinter().getDescription(this);
         if(isKickerMatters()) {
-            base += ", Kicker(s): " + this.outOfHand.stream().map(c -> Card.getFaceFromValue(c.getValue())).collect(Collectors.joining(" "));
+            base += ", Kicker(s): " + this.kickers.stream().map(c -> Card.getFaceFromValue(c.getValue())).collect(Collectors.joining(" "));
         }
         return base;
     }
 
-    public void setKickerMatters(boolean matters) {
-        if(!matters){
-            properties.remove(KICKER_PROP);
-        }
-        else{
-            properties.add(KICKER_PROP);
-        }
+    public void addKicker(Card kicker) {
+        this.kickers.add(kicker);
     }
 
     public boolean isKickerMatters() {
-        return properties.contains(KICKER_PROP);
-    }
-
-    public void setLowWheel(boolean lowWheel){
-        if(!lowWheel){
-            properties.remove(LOW_WHEEL_PROP);
-        }
-        else{
-            properties.add(LOW_WHEEL_PROP);
-        }
-    }
-
-    public boolean isLowWheel() {
-        return properties.contains(LOW_WHEEL_PROP);
+        return this.kickers.size() != 0;
     }
 
     public void setType(HandType type) {

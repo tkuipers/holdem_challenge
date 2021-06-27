@@ -7,8 +7,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.List;
 
-public class ThreeOfAKindValidator extends MappedCardValidator{
-    public ThreeOfAKindValidator() {
+public class ThreeOfAKindHandPreparer extends MappedCardHandPreparer {
+    public ThreeOfAKindHandPreparer() {
         super(HandType.THREE_OF_A_KIND);
     }
 
@@ -28,7 +28,7 @@ public class ThreeOfAKindValidator extends MappedCardValidator{
                 }
             }
             if(isValid) {
-                return new HandValidation(true, pair, outOfHand, this.type);
+                return new HandValidation(true, joinLists(pair, outOfHand), this.type);
             }
         }
         return new HandValidation(false);

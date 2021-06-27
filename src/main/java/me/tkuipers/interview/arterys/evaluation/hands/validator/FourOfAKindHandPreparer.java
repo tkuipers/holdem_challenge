@@ -7,8 +7,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FourOfAKindValidator extends MappedCardValidator {
-    public FourOfAKindValidator() {
+public class FourOfAKindHandPreparer extends MappedCardHandPreparer {
+    public FourOfAKindHandPreparer() {
         super(HandType.FOUR_OF_A_KIND);
     }
 
@@ -18,14 +18,16 @@ public class FourOfAKindValidator extends MappedCardValidator {
             var keys = map.asMap().keySet().stream().collect(Collectors.toList());
             if(map.asMap().get(keys.get(0)).size() == 4) {
                 return new HandValidation(true,
-                        map.asMap().get(keys.get(0)).stream().collect(Collectors.toList()),
-                        map.asMap().get(keys.get(1)).stream().collect(Collectors.toList()),
+                        joinLists(
+                                map.asMap().get(keys.get(0)).stream().collect(Collectors.toList()),
+                                map.asMap().get(keys.get(1)).stream().collect(Collectors.toList())),
                         this.type);
             }
             if(map.asMap().get(keys.get(0)).size() == 1) {
                 return new HandValidation(true,
-                        map.asMap().get(keys.get(1)).stream().collect(Collectors.toList()),
-                        map.asMap().get(keys.get(0)).stream().collect(Collectors.toList()),
+                        joinLists(
+                                map.asMap().get(keys.get(1)).stream().collect(Collectors.toList()),
+                                map.asMap().get(keys.get(0)).stream().collect(Collectors.toList())),
                         this.type);
             }
         }

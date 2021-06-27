@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class ArterysMain {
     public static void main(String[] args) {
         //Add Comments
-        //Re-Eval Architecture, especially around kicker and printing
+        //Add Documentation
         //run through sonarqube and linter
         var orderedPlayers = new GameEvaluator(new StandardInputReader()).evaluateGame();
         System.out.println(orderedPlayers.stream().collect(Collectors.joining("\n")));

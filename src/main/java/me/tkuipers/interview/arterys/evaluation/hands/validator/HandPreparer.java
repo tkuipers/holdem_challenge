@@ -7,11 +7,13 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
-public abstract class Validator {
+public abstract class HandPreparer {
     protected final HandType type;
 
-    protected Validator(HandType type){
+    protected HandPreparer(HandType type){
         this.type = type;
     }
 
@@ -35,6 +37,11 @@ public abstract class Validator {
 
     public HandType getType() {
         return type;
+    }
+
+    protected List<Card> joinLists(List<Card> inHand, List<Card> outOfhand){
+        return Stream.concat(outOfhand.stream(), inHand.stream())
+                .collect(Collectors.toList());
     }
 
 }

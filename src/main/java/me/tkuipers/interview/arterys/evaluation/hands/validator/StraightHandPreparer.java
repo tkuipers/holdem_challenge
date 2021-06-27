@@ -7,8 +7,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.List;
 
-public class StraightValidator extends Validator{
-    public StraightValidator() {
+public class StraightHandPreparer extends HandPreparer {
+    public StraightHandPreparer() {
         super(HandType.STRAIGHT);
     }
 
@@ -23,7 +23,7 @@ public class StraightValidator extends Validator{
                     return new HandValidation(false);
                 }
             }
-            return new HandValidation(true, hand, Lists.newArrayList(), this.type);
+            return new HandValidation(true, hand, this.type);
         }
         else {
             //Case where ace is played low
@@ -32,9 +32,14 @@ public class StraightValidator extends Validator{
                     return new HandValidation(false);
                 }
             }
-            var validation = new HandValidation(true, hand, Lists.newArrayList(), this.type);
-            validation.setLowWheel(true);
+            moveAceToBeginning(hand);
+            var validation = new HandValidation(true, hand, this.type);
             return validation;
         }
+    }
+
+    private void moveAceToBeginning(List<Card> hand) {
+        var el = hand.remove(hand.size()-1);
+        hand.add(0, el);
     }
 }

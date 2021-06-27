@@ -8,8 +8,8 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TwoPairValidator extends MappedCardValidator{
-    public TwoPairValidator() {
+public class TwoPairHandPreparer extends MappedCardHandPreparer {
+    public TwoPairHandPreparer() {
         super(HandType.TWO_PAIR);
     }
 
@@ -26,7 +26,9 @@ public class TwoPairValidator extends MappedCardValidator{
             }
         }
         if(pairs.size() == 2){
-            return new HandValidation(true, pairs.stream().flatMap(List::stream).collect(Collectors.toList()), outOfHand, this.type);
+            return new HandValidation(true,
+                    joinLists(pairs.stream().flatMap(List::stream).collect(Collectors.toList()), outOfHand),
+                    this.type);
         }
         return new HandValidation(false);
     }
