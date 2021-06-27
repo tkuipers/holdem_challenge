@@ -3,17 +3,22 @@ package me.tkuipers.interview.arterys.evaluation.engine;
 import me.tkuipers.interview.arterys.data.Card;
 import me.tkuipers.interview.arterys.data.HandValidation;
 import me.tkuipers.interview.arterys.data.Player;
+import me.tkuipers.interview.arterys.evaluation.CardParser;
 import me.tkuipers.interview.arterys.evaluation.hands.HandValidationComparer;
 import me.tkuipers.interview.arterys.evaluation.hands.validator.*;
+import me.tkuipers.interview.arterys.log.Log;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class EvaluationEngine {
+    private static final Logger LOG = Log.getLogger(CardParser.class.getSimpleName());
     private Collection<Validator> validators;
 
     public HandValidation evaluate(Player player) {
         HandValidation bestHand = null;
+        LOG.info("Beginning Evaluation of: " + player.getName());
         for(var hand : player.getHands()) {
             addValidators();
             var thisHand = evaluateHand(hand);
@@ -27,6 +32,7 @@ public class EvaluationEngine {
                 }
             }
         }
+        LOG.info("Evaluated " + player.getName() + " Best Hand: " + bestHand.getHandDescription());
         return bestHand;
     }
 
@@ -47,6 +53,7 @@ public class EvaluationEngine {
 
     private HandValidation evaluateHand(List<Card> hand) {
         for(var validator : this.validators) {
+            LOG.fine("\tChecking hand for: " + validator.getType() + " hand: " + hand);
             var handValidation = validator.evaluateHand(hand);
             if(handValidation.isValid()) {
                 return handValidation;

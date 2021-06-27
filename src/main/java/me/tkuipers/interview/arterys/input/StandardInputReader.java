@@ -1,6 +1,7 @@
 package me.tkuipers.interview.arterys.input;
 
 import com.google.common.collect.Lists;
+import me.tkuipers.interview.arterys.log.Log;
 
 import java.util.Collection;
 import java.util.logging.Logger;
@@ -9,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StandardInputReader implements InputReader {
-    private static final Logger LOG = Logger.getLogger(StandardInputReader.class.getSimpleName());
+    private static final Logger LOG = Log.getLogger(StandardInputReader.class.getSimpleName());
     private final List<String> playerStrings;
     private final String communityString;
 

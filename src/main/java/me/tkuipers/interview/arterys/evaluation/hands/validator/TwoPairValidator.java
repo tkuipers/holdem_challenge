@@ -17,12 +17,8 @@ public class TwoPairValidator extends MappedCardValidator{
     protected HandValidation evaluate(List<Card> hand) {
         List<List<Card>> pairs = Lists.newArrayList();
         List<Card> outOfHand = Lists.newArrayList();
-        System.out.println("Here is what's in the map");
-        System.out.println("\n" + this.map + "\n");
         for(var key : this.map.asMap().keySet()) {
             if(this.map.asMap().get(key).size() == 2) {
-                System.out.println("Adding to list");
-                System.out.println(this.map.get(key));
                 pairs.add(this.map.get(key));
             }
             else{

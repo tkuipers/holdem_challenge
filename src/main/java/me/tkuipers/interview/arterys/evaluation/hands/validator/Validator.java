@@ -27,10 +27,14 @@ public abstract class Validator {
     }
 
     protected final boolean validateHand(List<Card> hand) {
-        System.out.println("Evaluating for " + this.type);
         return hand != null &&
                 hand.size() == 5;
     }
 
     protected abstract HandValidation evaluate(List<Card> hand);
+
+    public HandType getType() {
+        return type;
+    }
+
 }

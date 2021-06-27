@@ -4,13 +4,14 @@ import com.google.common.collect.Lists;
 import me.tkuipers.interview.arterys.data.Card;
 import me.tkuipers.interview.arterys.data.Player;
 import me.tkuipers.interview.arterys.input.InputReader;
+import me.tkuipers.interview.arterys.log.Log;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
 public class CardParser {
-    private static final Logger LOG = Logger.getLogger(CardParser.class.getSimpleName());
+    private static final Logger LOG = Log.getLogger(CardParser.class.getSimpleName());
     private final List<Player> players;
 
     public CardParser(InputReader reader) {
