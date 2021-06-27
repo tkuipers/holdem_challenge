@@ -8,6 +8,9 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Check if a hand is all of one suite and the prepare it if so.
+ */
 public abstract class SameSuiteHandPreparer extends HandPreparer {
     protected SameSuiteHandPreparer(HandType type){
         super(type);

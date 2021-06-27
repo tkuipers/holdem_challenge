@@ -6,6 +6,14 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * Comparator for a HandValidation
+ *
+ * Compares by:
+ * Hand Type
+ * Cards that are part of the hand
+ * Kickers
+ */
 public class HandValidationComparer implements Comparator<HandValidation> {
     private boolean shouldDetermineKickerDisplay;
     public HandValidationComparer(boolean shouldDetermineKickerDisplay) {

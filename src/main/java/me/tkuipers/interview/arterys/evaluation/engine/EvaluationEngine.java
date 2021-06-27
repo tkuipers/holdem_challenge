@@ -12,6 +12,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * The engine for evaluating the best hand that a player can have.  Uses all possible hands
+ * for each player to determine which has the highest poker value.
+ */
 public class EvaluationEngine {
     private static final Logger LOG = Log.getLogger(CardParser.class.getSimpleName());
     private Collection<HandPreparer> handPreparers;

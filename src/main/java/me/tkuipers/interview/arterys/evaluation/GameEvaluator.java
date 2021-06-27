@@ -8,6 +8,9 @@ import me.tkuipers.interview.arterys.input.StandardInputReader;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Evaluate all of the hands.
+ */
 public class GameEvaluator {
     private InputReader reader;
 

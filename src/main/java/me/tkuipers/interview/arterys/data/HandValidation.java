@@ -8,6 +8,10 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * This class holds the prepared hands, and important metadata.  It is the primary object for performing
+ * hand comparisons with.
+ */
 public class HandValidation {
     private final boolean isValid;
     private final ImmutableList<Card> cards;

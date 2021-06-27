@@ -7,6 +7,9 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 
 import java.util.List;
 
+/**
+ * Add all the cards to a hashmap and then prepare for evaluation and printing.
+ */
 public abstract class MappedCardHandPreparer extends HandPreparer {
     protected ArrayListMultimap<Integer, Card> map;
 

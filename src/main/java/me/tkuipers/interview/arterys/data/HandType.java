@@ -3,6 +3,10 @@ package me.tkuipers.interview.arterys.data;
 import me.tkuipers.interview.arterys.evaluation.hands.display.HandPrintingFormatter;
 import me.tkuipers.interview.arterys.evaluation.hands.display.HandPrintingFormatters;
 
+/**
+ * The enum for storing both the hand type and it's metadata.  This includes
+ * the value of that hand, the title of it, the way to print it, and the size of it.
+ */
 public enum HandType {
     ROYAL_FLUSH(1100, "Royal Flush", HandPrintingFormatters.PRINT_NOTHING, 5),
     STRAIGHT_FLUSH(1000, "Straight Flush", HandPrintingFormatters.HIGH_CARD, 5),

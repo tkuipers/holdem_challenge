@@ -10,6 +10,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.logging.Logger;
 
+/**
+ * Convert the string given by the InputReader into Players with their hands.
+ */
 public class CardParser {
     private static final Logger LOG = Log.getLogger(CardParser.class.getSimpleName());
     private final List<Player> players;

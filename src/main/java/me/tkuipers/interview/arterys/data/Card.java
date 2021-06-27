@@ -1,5 +1,9 @@
 package me.tkuipers.interview.arterys.data;
 
+/**
+ * The class for storing a card state.  This class is immutable and cannot
+ * be changed once instantiated.
+ */
 public class Card {
     private final Suit suit;
     private final int value;

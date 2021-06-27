@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * The player object, contains the player and all information
+ * about them.
+ */
 public class Player {
     private final String name;
     private final ImmutableCollection<Card> cards;

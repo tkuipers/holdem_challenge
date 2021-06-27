@@ -6,6 +6,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+/**
+ * Create File Logger.
+ */
 public class Log {
     private static FileHandler handler;
     private static final String LOG_LOCATION = "/tmp/tkuipers/output.log";

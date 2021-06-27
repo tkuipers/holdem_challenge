@@ -8,9 +8,18 @@ import java.util.Comparator;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+/**
+ * Concrete implementation for card printing
+ */
 public class HandPrintingFormatters {
+    /**
+     * Print the highest card in the hand
+     */
     public static final HandPrintingFormatter HIGH_CARD = validation -> validation.getCards().get(validation.getCards().size()-1).getDescription();
 
+    /**
+     * Print all unique cards within the hand
+     */
     public static final HandPrintingFormatter UNIQUE_VALUES = validation -> {
         var hand = validation.getCards().subList(5-validation.getType().getHandSize(), validation.getCards().size()-1);
         Set<Integer> uniqueCards = Sets.newHashSet();
@@ -21,5 +30,8 @@ public class HandPrintingFormatters {
                 .collect(Collectors.joining(" "));
     };
 
+    /**
+     * Don't print anything.
+     */
     public static final HandPrintingFormatter PRINT_NOTHING = hand -> "";
 }

@@ -1,5 +1,8 @@
 package me.tkuipers.interview.arterys.data;
 
+/**
+ * The types of Suits available for a card.
+ */
 public enum Suit {
     HEARTS,
     DIAMONDS,

@@ -9,6 +9,9 @@ import java.util.logging.Logger;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Read game input from STDIN
+ */
 public class StandardInputReader implements InputReader {
     private static final Logger LOG = Log.getLogger(StandardInputReader.class.getSimpleName());
     private final List<String> playerStrings;

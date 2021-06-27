@@ -9,6 +9,9 @@ import me.tkuipers.interview.arterys.data.HandValidation;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Generate all possible hand options
+ */
 public class HandOptionGenerator {
     private ImmutableList<Card> cards;
     private static final int HAND_SIZE = 5;

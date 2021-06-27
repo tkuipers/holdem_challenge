@@ -10,6 +10,9 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Prepare a hand to be evaluated and printed.
+ */
 public abstract class HandPreparer {
     protected final HandType type;
 
