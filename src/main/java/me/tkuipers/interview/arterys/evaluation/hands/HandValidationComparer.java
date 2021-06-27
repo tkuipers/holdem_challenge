@@ -51,7 +51,7 @@ public class HandValidationComparer implements Comparator<HandValidation> {
         public int compare(HandValidation h1, HandValidation h2) {
             List<Card> o1 = h1.getCards();
             List<Card> o2 = h2.getCards();
-
+            //Compare starting at back end as that is where in-hand cards are stored.
             for(int i = o1.size()-1; i >= 0; i--){
                 var val1 = o1.get(i).getValue();
                 var val2 = o2.get(i).getValue();
@@ -68,7 +68,7 @@ public class HandValidationComparer implements Comparator<HandValidation> {
     }
 
     private void addToKickers(HandValidation h1, HandValidation h2, List<Card> o1, List<Card> o2, int i) {
-        //determine if card is a kicker and if so, add it to list of useful kickers.
+        //determine if card is a possible kicker and if so, add it to list of useful kickers.
         if(i < o1.size()- h1.getType().getHandSize()){
             h1.addKicker(o1.get(i));
         }
