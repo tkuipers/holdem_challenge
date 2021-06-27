@@ -21,7 +21,7 @@ public class HandValidationComparerTest {
     }
 
     @Test
-    public void sameHandHigherVal(){
+    public void samePairAndHigherVal(){
         var handOne = new HandValidation(true,
                 Lists.newArrayList(Card.fromString("QH"), Card.fromString("JH"), Card.fromString("AH"), Card.fromString("TH"), Card.fromString("TD")),
                 HandType.ONE_PAIR);
