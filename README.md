@@ -28,7 +28,7 @@ evaluate the game state.
 
 ## How's it built?
 
-![Diagram](https://lucid.app/lucidchart/3c9a03dc-a698-4a0b-a27a-efbeed06f257/view)
+[Diagram](https://lucid.app/lucidchart/3c9a03dc-a698-4a0b-a27a-efbeed06f257/view)
 
 Everything in this app starts in the ```main``` method of the 
 ```ArterysMain``` class.  This class creates the ```InputReader``` and the
